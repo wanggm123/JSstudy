@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .bg{
+        width:500px;
+        height: 500px;
+        background:white;
+        margin: auto;
+    }
+ img{
+     width: 300px;
+     height: 300px;
+
+     display: none;
+
+}
+    .show{
+        display: block;
+    }
+
+</style>
+<body>
+<div class="bg" id="bg">
+    <img src="../images/x1.jpg" alt="" id="x1" class="show">
+    <img src="../images/x2.jpg" alt="" id="x2" >
+</div>
+<script>
+    var oBg=document.getElementById("bg");
+    var oX1=document.getElementById("x1");
+    var oX2=document.getElementById("x2");
+
+    oX1.onclick = function () {
+        // this.className="";
+        // oX2.className="show";
+        oX1.style.display="none";
+        oX2.style.display="block";
+
+    }
+    oX2.onclick = function () {
+        // this.className="";
+        // oX1.className="show";
+        oX2.style.display="none";
+        oX1.style.display="block";
+    }
+</script>
+</body>
+</html>

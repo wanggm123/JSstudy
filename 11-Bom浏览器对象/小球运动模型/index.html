@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    p{
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #aeb854;
+        border-radius: 10px;
+    }
+</style>
+<body>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+<script>
+    var aP=document.querySelectorAll("P");
+    var xstep=[];
+    var ystep=[];var length=aP.length;
+    // for(var k=0;k<=length;k++)
+    // {
+    //     oBox.appendChild(document.createElement("p"));
+    // }
+    // var aP=document.querySelectorAll("P");
+
+    for(var i=0;i<length;i++) {
+        xstep.push(5+i);
+        ystep.push(5+i);
+    }
+    var maxleft=document.documentElement.clientWidth-aP[0].clientWidth;
+    var maxtop=document.documentElement.clientHeight-aP[0].clientHeight;
+    console.log(maxtop);
+
+    var timer=setInterval(function () {
+        for(var j=0;j<length;j++){
+            if(aP[j].offsetTop>maxtop||aP[j].offsetTop<0)
+            {
+                aP[j].style.left=aP[j].offsetLeft+xstep[j]+"px";
+                ystep[j]=-ystep[j];
+                aP[j].style.top=aP[j].offsetTop+ystep[j]+"px";
+                var r,g,b;
+                r = Math.floor(Math.random()*256);  //[0,1)
+                g = Math.floor(Math.random()*256);  //[0,1)
+                b = Math.floor(Math.random()*256);  //[0,1)
+
+                aP[j].style.background = "rgb("+r+","+g+","+b+")";
+            }
+            if(aP[j].offsetLeft>maxleft||aP[j].offsetLeft<0)
+            {
+                xstep[j]=-xstep[j]
+                aP[j].style.left=aP[j].offsetLeft+xstep[j]+"px";
+                aP[j].style.top=aP[j].offsetTop+ystep[j]+"px";
+                var r,g,b;
+                r = Math.floor(Math.random()*256);  //[0,1)
+                g = Math.floor(Math.random()*256);  //[0,1)
+                b = Math.floor(Math.random()*256);  //[0,1)
+            }
+            aP[j].style.left=aP[j].offsetLeft+xstep[j]+"px";
+            aP[j].style.top=aP[j].offsetTop+ystep[j]+"px";
+        }
+
+    },50);
+
+
+</script>
+</body>
+</html>

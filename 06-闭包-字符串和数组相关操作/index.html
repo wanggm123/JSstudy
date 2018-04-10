@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .main{
+        width: 430px;
+        height: 207px;
+        margin: 100px auto;
+        display: flex;
+    }
+    .main .main-left li{
+        width: 104px;
+        height: 51px;
+        background-color: black;
+        margin-bottom: 1px;
+    }
+    .main .main-left .choose,.main .main-footer .choose{
+        background-color: #b82413;
+    }
+    .main .main-left li span{
+        color: white;
+        margin-left: 20px;
+        line-height: 50px;
+    }
+    .main .main-right li{
+        display: none;
+    }
+    .main .main-right li img{
+        width: 326px;
+        height: 207px;
+    }
+    .main .main-right .on{
+        display: block;
+
+    }
+
+    .main .main-footer{
+        width: 325px;
+        height: 35px;
+        position: relative;
+        top:172px;
+        left: -325px;
+        background-color: black;
+        opacity: 0.5;
+    }
+    .main .main-footer ul{
+        width: 325px;
+        height: 35px;
+        display: flex;
+
+    }
+    .main .main-footer li{
+        position: relative;
+        left: 181px;
+        width: 35px;
+        height: 35px;
+        margin-right: 1px;
+        text-align: center;
+        line-height: 35px;
+        background-color: #aeb854;
+
+    }
+
+
+</style>
+<body>
+<div class="main">
+    <ul class="main-left">
+        <li class="choose"><span>选项卡一</span></li>
+        <li><span>选项卡二</span></li>
+        <li><span>选项卡三</span></li>
+        <li><span>选项卡四</span></li>
+    </ul>
+    <ul class="main-right">
+        <li class="on"><img src="images/1.jpg" alt="" ></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+    </ul>
+    <div class="main-footer">
+        <ul>
+                <li class="choose">1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+        </ul>
+    </div>
+    <ul class="main-right">
+        <li class="on"><img src="images/1.jpg" alt="" ></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+    </ul>
+    <div class="main-footer">
+        <ul>
+            <li class="choose">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+    <ul class="main-right">
+        <li class="on"><img src="images/1.jpg" alt="" ></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+    </ul>
+    <div class="main-footer">
+        <ul>
+            <li class="choose">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <ul class="main-right">
+        <li class="on"><img src="images/1.jpg" alt="" ></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+    </ul>
+    <div class="main-footer">
+        <ul>
+            <li class="choose">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+
+
+
+</div>
+<script>
+    var aLi=document.querySelectorAll(".main .main-left li");
+    var aLi1=document.querySelectorAll(".main .main-footer li");
+    for(var i=0;i<aLi.length;i++)
+    {
+        aLi[i].index=i;
+        aLi[i].onmouseover=function () {
+            for(j=0;j<aLi.length;j++)
+            {
+                aLi[j].className="";
+                aLi[this.index].className="choose";
+         }
+        }
+    }
+    for(var i=0;i<aLi1.length;i++)
+    {
+        aLi1[i].index=i;
+        aLi1[i].onmouseover=function () {
+            for(j=0;j<aLi1.length;j++)
+            {
+                aLi1[j].className="";
+                aLi1[this.index].className="choose";
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        color: aqua;
+    }
+    span{
+        font-size: 20px;
+        background-color: #ff9616;
+    }
+
+</style>
+<body>
+<div></div>
+<script>
+    oDiv=document.querySelector("div");
+    count();
+    var timer=setInterval(count,1000);
+    function count() {
+        var time=new Date();
+        var finish=new Date(2018,8,1);
+        var graduate=finish-time;
+        var day=Math.floor(graduate/1000/60/60/24);
+        var hour=Math.floor(graduate/1000/60/60)%24;
+        var min=Math.floor(graduate/1000/60)%60;
+        var second=Math.floor(graduate/1000) % 60;
+
+        oDiv.innerHTML=("距离毕业还有"+"<span>"+change(day)+"</span>"+"天"+"<span>"+change(hour)+"</span>"+"时"+"<span>"+change(min)+"</span>"+"分"+"<span>"+change(second)+"</span>"+"秒！");
+    }
+    function change(num) {
+        return num<10?"0"+num:num;
+
+    }
+
+    
+</script>
+</body>
+</html>

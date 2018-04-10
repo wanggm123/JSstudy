@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .content{
+        width: 500px;
+        height: 150px;
+        margin: 100px auto;
+        border-radius: 10px;
+        background-color: gray;
+        box-shadow: 0 0 10px 0 black;
+        padding: 20px;
+    }
+    #text{
+        width: 500px;
+        height: 100px;
+    }
+    img{
+        float: left;
+        margin-top: 5px;
+        width: 40px;
+        height: 40px;
+        display: none;
+        border: 1px solid green;
+    }
+    .show{
+        display: block;
+    }
+    .publish{
+        text-align: center;
+        line-height: 40px;
+        margin-top: 5px;
+        float: right;
+        width: 80px;
+        height: 40px;
+        background-color: #ff9616;
+        border-radius: 10px;
+        border: 1px solid black;
+    }
+    .clearfix:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    p{
+        font-size: 17px;
+    }
+    ul {
+        width: 500px;
+        margin: auto;
+    }
+    .footer-img{
+        display: block;
+        margin-top: 0px;
+    }
+    #artical li{
+        border-bottom: 1px solid black;
+        padding: 30px;
+    }
+
+</style>
+<body>
+<div class="content">
+    <div class="content-head">
+        <textarea name="" id="text" cols="30" rows="10"></textarea>
+    </div>
+    <div class="content-footer ">
+        <img id="x1" src="images/x1.jpg" alt=""class="show">
+        <img id="x2" src="images/x2.jpg" alt="" class="">
+        <div class="publish clearfix" id="publish"><p>发表</p></div>
+    </div>
+</div>
+<ul id="artical"></ul>
+<script>
+    var oText=document.getElementById("text")
+    var oX1=document.getElementById("x1");
+    var oX2=document.getElementById("x2");
+    var oPublish=document.getElementById("publish");
+    var oArtical= document.getElementById("artical");
+    var imgSrc = oX1.src;
+    oX1.onclick=function () {
+        oX1.className="";
+        oX2.className="show";
+        imgSrc=oX2.src;
+
+    }
+    oX2.onclick=function () {
+        oX2.className="";
+        oX1.className="show";
+        imgSrc=oX1.src;
+
+    }
+    oPublish.onclick=function () {
+        if(oText.value){
+
+            oArtical.innerHTML+="<li><img class='footer-img' src='"+imgSrc+"' alt=''>"+oText.value+"</li>"
+        }
+        oText.value="";
+
+
+    }
+</script>
+</body>
+</html>

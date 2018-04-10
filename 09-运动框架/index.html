@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    div {
+        width: 100px;
+        height: 100px;
+        background-color: black;
+        position: absolute;
+        left: 100px;
+        top: 100px;
+        opacity: 1;
+    }
+</style>
+<body>
+<div>
+
+</div>
+<script src="../10-运动框架/无缝轮播/animation.js"></script>
+<script>
+    var oDiv=document.querySelector("div");
+    animation(oDiv,{left:"700",top:"250",opacity:"0.5"},3000);
+</script>
+</body>
+</html>

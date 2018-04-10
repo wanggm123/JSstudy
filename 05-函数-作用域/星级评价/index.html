@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .main{
+        width: 500px;
+        height: 100px;
+        display: flex;
+        margin: 100px auto;
+    }
+    .main-header{
+        width: 250px;
+        height: 100px;
+        /*background: #ffcd24;*/
+        display: flex;
+    }
+    .main-footer{
+        width: 150px;
+        height: 100px;
+        border: 1px solid black;
+    }
+    .main-header ul{
+        display: flex;
+        margin-left: 20px ;
+    }
+    .main-header ul li{
+
+        width: 30px;
+        height: 20px;
+        background: url("images/star.png") no-repeat;
+    }
+    .main-header ul .on{
+        background: url("images/star.png") no-repeat 0 -28px;
+    }
+
+</style>
+<body>
+<div class="main">
+
+
+    <div class="main-header">
+        <span>星级评分:</span>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>
+    <div class="main-footer">
+        <span>提示：请认真的给当前文章打分！</span>
+    </div>
+</div>
+<script>
+    var aLi=document.querySelectorAll(".main .main-header li");
+    var oSpan=document.querySelector(".main .main-footer ")
+    for(var i=0;i<aLi.length;i++)
+    {
+        aLi[i].index=i;
+        aLi[i].onmouseover=function () {
+            for(var j=0;j<=this.index;j++) {
+                aLi[j].className = "on";
+                if(this.index==0)
+                {
+                    oSpan.innerText=("很差！");
+                }
+                else if(this.index==1)
+                {
+                    oSpan.innerText=("较差！");
+                }
+                else if(this.index==2)
+                {
+                    oSpan.innerText=("还行！");
+                }
+                else if(this.index==3)
+                {
+                    oSpan.innerText=("推荐！");
+                }
+                else if(this.index==4)
+                {
+                    oSpan.innerText=("力荐！");
+                }
+
+            }
+
+        }
+        aLi[i].onmouseout = function () {
+            for(var j=0;j<=this.index;j++) {
+                aLi[j].className = "";
+                oSpan.innerText=("提示：请认真的给当前文章打分！");
+            }
+
+        }
+    }
+
+</script>
+</body>
+</html>

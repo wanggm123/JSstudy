@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+   .main{
+       width: 400px;
+       height: 500px;
+       background-color: #2b88b8;
+       box-shadow: 0 0 10px 0;
+       margin: 100px auto;
+   }
+   .main-head{
+       width: 400px;
+       height: 50px;
+       background-color: darkgreen;
+       color: white;
+   }
+    .main-head  p{
+        font-size: 30px;
+        text-align: center;
+        line-height: 50px;
+    }
+    .main-footer{
+        width: 400px;
+        height: 300px;
+    }
+    .main-footer li {
+        width: 400px;
+        height: 50px;
+        position:relative;
+        left: 120px;
+        top: 20px;
+
+    }
+    .main-footer li input{
+        width: 200px;
+        height: 25px;
+        display:block;
+    }
+    .main-footer li span {
+
+        font-size: 15px;
+        color: red;
+        display: none;
+    }
+    .main-last{
+        width: 100px;
+        height: 50px;
+        background-color: #ff9616;
+        margin: 50px auto;
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+
+    }
+    .main-footer li .on{
+        display:block;
+    }
+</style>
+<body>
+<div class="main">
+    <div class="main-head">
+        <p>登陆</p>
+    </div>
+    <div class="main-footer">
+        <ul>
+            <li>
+                <input type="text" placeholder="请输入用户名：" name="username">
+                <span>字母开头,长度5-10位字母数字下划线</span>
+            </li>
+            <li>
+                <input type="text" placeholder="请输入密码：" name="password">
+                <span>字母数字长度6-18位</span>
+            </li>
+            <li>
+                <input type="text" placeholder="请再次输入密码：" name="password">
+                <span>两次密码不一致</span>
+            </li>
+            <li>
+                <input type="text" placeholder="请输入电话：" name="phone">
+                <span>电话号码格式不正确</span>
+            </li>
+            <li>
+                <input type="text" placeholder="请输入E-mail：" name="email">
+                <span>邮箱格式不正确</span>
+            </li>
+            <li>
+                <input type="text" placeholder="请输入身份证：" name="card">
+                <span>请输入身份证</span>
+            </li>
+        </ul>
+
+    </div>
+    <div class="main-last">注册</div>
+</div>
+<script>
+    var aInput=document.querySelectorAll(".main-footer ul input");
+    var aSpan=document.querySelectorAll(".main-footer ul span");
+    var length=aInput.length;
+    var json={
+        username : /^[a-zA-Z_]\w{5,17}$/,
+        password : /^[1-9a-zA-Z_]\w{5,17}$/,
+        phone : /^1[3-8]\d{9}$/,
+        email : /^[1-9]\d{4,9}@qq.com$/,
+        card : /^[1-9][0-9xX]{17}$/
+
+    }
+    for (var i=0;i<length;i++)
+    {
+        aInput[i].index=i;
+        aInput[i].onblur = function () {
+            if(this.value && json[this.name].test(this.value))
+            {
+
+                aSpan[this.index].className="";
+
+            }
+            else{
+                this.focus();
+                aSpan[this.index].className="on";
+            }
+
+        }
+        aInput[2].onblur = function (){
+            console.log();
+             if(aInput[2].value==aInput[1].value)
+             {
+                 aSpan[this.index].className="";
+             }
+             else {
+                 this.focus();
+                 aSpan[this.index].className="on";
+             }
+        }
+    }
+
+
+
+</script>
+</body>
+</html>

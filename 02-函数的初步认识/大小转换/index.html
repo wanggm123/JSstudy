@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_573736_wd94jb9o3dm9rudi.css">
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    a{
+        text-align: center;
+    }
+    .iconfont{
+        font-size: 30px;
+    }
+    #text{
+        font-size: 20px;
+    }
+</style>
+<body>
+<i type="button" class="iconfont icon-icon--" id="jia"></i>
+<i type="button" class="iconfont icon-jianhaocu" id="jian"></i>
+<span id="text">为北方去五道口弄哦额都饿哦IE版本饿哦否辽宁可能吃</span>
+<script>
+    var oJia=document.getElementById("jia");
+    var oJian=document.getElementById("jian");
+    var oText=document.getElementById("text");
+    var size=20;
+    oJia.onclick=function () {
+        size++;
+        // oText.style.fontSize=size+"px";
+        oText.style.cssText= "font-size: "+size+"px"
+
+    }
+    oJian.onclick=function () {
+        size--;
+        // oText.style.fontSize=size+"px";
+        oText.style.cssText= "font-size: "+size+"px"
+
+    }
+</script>
+</body>
+</html>

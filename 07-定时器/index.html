@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .verb{
+        width: 800px;
+        height: 450px;
+        margin:100px auto;
+    }
+    .verb  li{
+        display: none;
+    }
+    .verb  li img{
+        border-radius: 25px;
+    }
+    .verb .show{
+        display: block;
+    }
+    .verb-label-left{
+        display: block;
+        position: relative;
+        top:250px;
+
+
+    }
+    .verb-label-right{
+        display: block;
+        position: relative;
+        left:745px;
+        top:-250px;
+
+    }
+    .verb .verb-footer{
+        display: flex;
+        justify-content: center;
+
+    }
+    .verb .verb-footer li{
+        width: 20px;
+        height: 20px;
+        background-color:yellow;
+        display: block;
+        border-radius: 10px;
+        text-align: center;
+        position: relative;
+        top: -100px;
+        margin: 5px;
+    }
+    .verb .verb-footer .active{
+        background-color: aqua;
+        opacity: 0.5;
+    }
+
+</style>
+<body>
+<div class="verb">
+    <img src="images/btnL.png" alt="" class="verb-label-left" id="left">
+     <ul>
+        <li class="show"><img src="images/0.jpg" alt="" class="p0" ></li>
+        <li><img src="images/1.jpg" alt="" class="p0"></li>
+        <li><img src="images/2.jpg" alt="" class="p0"></li>
+        <li><img src="images/3.jpg" alt="" class="p0"></li>
+        <li><img src="images/4.jpg" alt="" class="p0"></li>
+     </ul>
+    <img src="images/btnR.png" alt="" class="verb-label-right" id="right">
+    <ul class="verb-footer">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</div>
+<script>
+    var oLeft=document.getElementById("left");
+    var oRight=document.getElementById("right");
+    var aP=document.querySelectorAll(".verb li");
+    var aF=document.querySelectorAll(".verb-footer li");
+    var oVerb=document.querySelector(".verb");
+    var i=0;
+    var timer=null;
+    next();
+    function next(){
+        timer =setInterval(set,2000);
+        function set() {
+        aP[i%5].className="";
+        aF[i%5].className="";
+        i++;
+        aP[i%5].className= "show";
+        aF[i%5].className= "active";
+
+     }
+    }
+    oLeft.onclick=function () {
+            aP[i%5].className="";
+            aF[i%5].className="";
+            if(i%5==0)
+            {
+                i=aP.length;
+                console.log(i);
+                console.log(aP[i--]);
+                aP[i].className="show";
+                aF[i].className="active";
+            }
+            else{
+                i--;
+                aP[i%5].className="show";
+                aF[i%5].className="active";
+            }
+
+    }
+    oRight.onclick=function (){
+            aP[i%5].className="";
+            aF[i%5].className="";
+            i++;
+            aP[i%5].className= "show";
+            aF[i%5].className= "active";
+  
+
+    }
+    for( var j=0; j<aF.length; j++ ){
+        aF[j].index=j;
+        aF[j].onclick = function () {
+            aP[i%5].className="";
+            aF[i%5].className="";
+            i =this.index;
+            aP[i%5].className="show";
+            aF[i%5].className="active";
+
+        }
+    }
+    oVerb.onmouseover=function () {
+            clearInterval(timer);
+
+    }
+    oVerb.onmouseout=function () {
+            next();
+
+
+    }
+
+</script>
+</body>
+</html>

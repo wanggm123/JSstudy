@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .main{
+        position: relative;
+        width: 800px;
+        height: 350px;
+        overflow: hidden;
+        margin:100px auto;
+    }
+    .main ul li{
+        position:absolute;
+
+    }
+    img{
+        width: 600px;
+        height: 350px;
+    }
+    .main ul li:nth-child(1){
+        left:0px;
+    }
+    .main ul li:nth-child(2){
+        left:160px;
+    }
+    .main ul li:nth-child(3){
+        left:320px;
+    }
+    .main ul li:nth-child(4){
+        left:480px;
+    }
+    .main ul li:nth-child(5){
+        left:640px;
+    }
+</style>
+<body>
+<div class="main">
+    <ul>
+        <li><img src="images/1.jpg" alt=""></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+        <li><img src="images/5.jpg" alt=""></li>
+    </ul>
+</div>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+    var $length=$(".main ul li").length;
+    var  $avg=($(".main").width()-$("img").width())/($length-1);
+
+        $(".main ul li").mouseenter(
+            function ()
+        {
+            var index=$(this).index();
+
+            $(".main ul li").each(function (i) {
+                if(i<=index) {
+                    $(this).stop();
+                    $(this).animate({left:($(".main").width()-$("img").width())/($length-1)*i},500);
+                }
+                else {
+                    $(this).stop();
+                        $(this).animate({left:$avg*(i-1)+$("img").width()},500);
+                }
+            })
+        }
+
+    )
+            $(".main ul li").mouseleave(function ()
+            {
+                $(".main ul li").each(function (i)
+                {
+                    $(this).stop();
+                    $(this).animate({left: $(".main").width() / $length *i}, 500);
+
+                })
+            })
+
+
+
+</script>
+
+</body>
+</html>

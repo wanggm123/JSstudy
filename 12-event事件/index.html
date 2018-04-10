@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    div{
+        position:absolute;
+        left: 0;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background-color: black;
+    }
+</style>
+<body>
+<div></div>
+<script>
+    var oBox=document.querySelector("div");
+    var maxleft = document.documentElement.clientWidth - oBox.clientWidth;
+    var maxtop = document.documentElement.clientHeight - oBox.clientHeight;
+    oBox.onmousedown=function (ev) {
+        var setx=this.offsetLeft;
+        var sety=this.offsetTop;
+        var startx=ev.clientX;
+        var starty=ev.clientY;
+        oBox.onmousemove=function (ev) {
+            var endx=ev.clientX;
+            var endy=ev.clientY
+            var targetx=endx-startx;
+            var targety=endy-starty;
+            var left=setx+targetx;
+            var top=sety+targety;
+            left=Math.max(left,0);
+            left=Math.min(left,maxleft);
+            top = Math.max(top,0);
+            top = Math.min(top,maxtop);
+            oBox.style.left=left+"px";
+            oBox.style.top=top+"px";
+
+
+        }
+    }
+    oBox.onmouseup=function () {
+        oBox.onmousedown=null;
+
+    }
+</script>
+</body>
+</html>

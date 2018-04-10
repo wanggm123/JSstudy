@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    body, dl, dd, dt, p, h1, h2, h3, h4, h5, h6 {
+        margin: 0;
+    }
+
+    ul, ol {
+        margin: 0;
+        list-style: none;
+        padding: 0;
+    }
+
+    a {
+        display: block;
+        text-decoration: none;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .shop{
+        width: 1000px;
+        height: 496px;
+        background: transparent;
+        margin: 100px auto;
+    }
+    ul{
+        display: flex;
+        justify-content: space-between;
+    }
+     li{
+        width: 250px;
+        height: 50px;
+        background-color: #cc3366;
+        border: 1px solid black;;
+    }
+    p{
+        text-align: center;
+        line-height: 50px;
+    }
+    .shop-content li{
+        width: 250px;
+        height: 90px;
+        background-color:transparent;
+    }
+    .shop-content li p{
+        text-align: center;
+        line-height: 90px;
+    }
+    .shop-content button{
+        position: relative;
+        left: 70px;
+        top:20px;
+        width: 40px;
+        height: 40px;
+        background-color: #cc3366;
+        font-size: 25px;
+        color: white;
+    }
+    .shop-content span{
+        text-align: center;
+        font-size: 20px;
+        position: relative;
+        left: 70px;
+        top:20px;
+        width: 40px;
+    }
+    .shop-footer{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .shop-footer{
+        /*border: 1px solid #cc3366;*/
+        background-color: #cc3366;
+    }
+    .shop-footer li{
+        width: 250px;
+        height: 74px;
+        background-color: transparent;
+        border: 0;
+    }
+    .shop-footer li p{
+        text-align: center;
+        line-height: 80px;
+    }
+     span{
+        color: #ffcd24;
+    }
+    .shop ul:nth-child(2) li:nth-child(1){background:url("images/shop1.jpg") no-repeat center/contain}
+    .shop ul:nth-child(3) li:nth-child(1){background:url("images/shop2.jpg") no-repeat center/contain}
+    .shop ul:nth-child(4) li:nth-child(1){background:url("images/shop3.jpg") no-repeat center/contain}
+    .shop ul:nth-child(5) li:nth-child(1){background:url("images/shop4.jpg") no-repeat center/contain}
+
+</style>
+<body>
+<div class="shop">
+    <ul class="shop-header">
+        <li><p>商品</p></li>
+        <li><p>单价</p></li>
+        <li><p>数量</p></li>
+        <li><p>小记</p></li>
+    </ul>
+    <ul class="shop-content">
+        <li></li>
+        <li><p class="average">10</p></li>
+        <li>
+            <button class="add">+</button>
+            <span>0</span>
+            <button class="reduce">-</button>
+        </li>
+        <li><p class="price">0</p></li>
+    </ul>
+    <ul class="shop-content">
+        <li></li>
+        <li><p class="average">20</p></li>
+        <li>
+            <button class="add">+</button>
+            <span>0</span>
+            <button class="reduce">-</button>
+        </li>
+        <li><p class="price">0</p></li>
+    </ul>
+    <ul class="shop-content">
+        <li></li>
+        <li><p class="average">30</p></li>
+        <li>
+            <button class="add">+</button>
+            <span>0</span>
+            <button class="reduce">-</button>
+        </li>
+        <li><p class="price">0</p></li>
+    </ul>
+    <ul class="shop-content">
+        <li></li>
+        <li><p class="average">40</p></li>
+        <li>
+            <button class="add">+</button>
+            <span>0</span>
+            <button class="reduce">-</button>
+        </li>
+        <li><p class="price">0</p></li>
+    </ul>
+    <ul class="shop-footer">
+        <li><p>以选中商品<span class="count">0</span>个</p></li>
+        <li><p>合计费用<span class="sum">0</span>💰</p></li>
+    </ul>
+</div>
+<script>
+    var aAdd=document.querySelectorAll(".shop-content .add");
+    var aReduce=document.querySelectorAll(".shop-content .reduce");
+    var aSpan=document.querySelectorAll(".shop-content span");
+    var aAverage=document.querySelectorAll(".shop-content .average");
+    var aPrice=document.querySelectorAll(".shop-content .price");
+    var oCount=document.querySelector(".shop-footer .count");
+    var oSum=document.querySelector(".shop-footer .sum");
+    var number=[];
+    console.log(oCount);
+     for(var i=0; i<aAdd.length; i++) {
+         number[i] = 0;
+         aAdd[i].index = i;
+         aAdd[i].onclick = function () {
+             number[this.index]++;
+             aSpan[this.index].innerText = (number[this.index]);
+             aPrice[this.index].innerText = (number[this.index] * parseInt(aAverage[this.index].innerHTML));
+             count();
+             sum();
+         }
+
+
+
+     }
+    for(var i=0; i<aReduce.length; i++) {
+        number[i] = 0;
+        aReduce[i].index = i;
+        aReduce[i].onclick = function () {
+            if (number[this.index] == 0) {
+                aSpan[this.index].innerText = (number[this.index]);
+            }
+            else {
+                number[this.index]--;
+                aSpan[this.index].innerText = (number[this.index]);
+                aPrice[this.index].innerText = (number[this.index] * parseInt(aAverage[this.index].innerHTML));
+                count();
+                 sum();
+            }
+
+
+        }
+    }
+        function count() {
+            var sum = 0;
+            for (j = 0; j < number.length; j++) {
+                sum = sum + number[j];
+            }
+            oCount.innerText = sum;
+        }
+        function sum() {
+            var sum = 0;
+            for (j = 0; j < aPrice.length; j++) {
+                sum = sum + parseInt(aPrice[j].innerHTML);
+
+            }
+            oSum.innerHTML = sum;
+        }
+
+</script>
+</body>
+</html>
